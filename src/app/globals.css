@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Offset anchor scrolling so sections don't hide under the fixed navbar. */
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-base text-slate-300 antialiased;
+    font-feature-settings: 'ss01', 'cv01', 'cv03';
+  }
+
+  ::selection {
+    background: rgba(34, 211, 238, 0.25);
+    color: #e2e8f0;
+  }
+
+  h1, h2, h3, h4 {
+    @apply text-slate-100;
+    text-wrap: balance;
+  }
+
+  /* Slim, dark scrollbar to match the theme. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148, 163, 184, 0.25) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.22);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.4);
+    background-clip: content-box;
+  }
+}
+
+@layer components {
+  /* Page shell / consistent horizontal rhythm. */
+  .container-content {
+    @apply mx-auto w-full max-w-content px-6 sm:px-8;
+  }
+
+  .section {
+    @apply scroll-mt-24 py-24 sm:py-28;
+  }
+
+  /* Gradient text used for the name + accents. */
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent-soft via-accent to-accent-deep bg-clip-text text-transparent;
+  }
+
+  /* Card surface with subtle glass + border. */
+  .card {
+    @apply relative rounded-2xl border border-border bg-surface/70 backdrop-blur-sm;
+  }
+
+  /* Small monospace label above section headings. */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-accent;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-md border border-border bg-white/[0.03] px-2.5 py-1 font-mono text-xs text-slate-400 transition-colors;
+  }
+  .chip:hover {
+    @apply border-accent/40 text-accent;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-base;
+  }
+  .btn-primary {
+    @apply bg-accent text-slate-950 hover:bg-accent-soft hover:shadow-glow;
+  }
+  .btn-ghost {
+    @apply border border-border bg-white/[0.02] text-slate-200 hover:border-accent/40 hover:text-accent;
+  }
+}
+
+@layer utilities {
+  /* Faint grid backdrop for the hero. */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* Radial mask so effects fade toward the edges. */
+  .mask-radial {
+    -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 40%, #000 40%, transparent 100%);
+    mask-image: radial-gradient(ellipse 60% 50% at 50% 40%, #000 40%, transparent 100%);
+  }
+
+  .glow-line {
+    background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.5), transparent);
+  }
+}
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
