@@ -1,16 +1,20 @@
+'use client';
+
 import { SectionHeading } from './SectionHeading';
 import { Reveal } from './Reveal';
 import { ProjectCard } from './ProjectCard';
 import { projects } from '@/lib/data';
+import { useLanguage } from '@/i18n/context';
 
 export function Projects() {
+  const { t } = useLanguage();
   return (
     <section id="projects" className="section">
       <div className="container-content">
         <SectionHeading
-          eyebrow="Projects"
-          title="Selected work"
-          description="A mix of self-hosted infrastructure, cloud platforms and systems programming. The Home Lab has a full case study."
+          eyebrow={t.projects.eyebrow}
+          title={t.projects.title}
+          description={t.projects.description}
         />
 
         <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">

@@ -1,26 +1,19 @@
+'use client';
+
 import { GraduationCap, Languages, Wrench } from 'lucide-react';
 import { Reveal } from './Reveal';
 import { Terminal } from './Terminal';
-
-const facts = [
-  {
-    icon: GraduationCap,
-    label: 'Education',
-    value: "MSc Computer Science — Cybersecurity, Network & Software Development, ESIEE Paris",
-  },
-  {
-    icon: Wrench,
-    label: 'Focus',
-    value: 'Secure infrastructure, networking, backend systems & automation',
-  },
-  {
-    icon: Languages,
-    label: 'Languages',
-    value: 'French (fluent) · English (professional) · Vietnamese (fluent)',
-  },
-];
+import { useLanguage } from '@/i18n/context';
 
 export function About() {
+  const { t } = useLanguage();
+
+  const facts = [
+    { icon: GraduationCap, label: t.about.factLabels.education, value: t.about.factValues.education },
+    { icon: Wrench, label: t.about.factLabels.focus, value: t.about.factValues.focus },
+    { icon: Languages, label: t.about.factLabels.languages, value: t.about.factValues.languages },
+  ];
+
   return (
     <section id="about" className="section">
       <div className="container-content grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -28,19 +21,15 @@ export function About() {
           <Reveal>
             <span className="eyebrow">
               <span className="h-px w-6 bg-accent/60" aria-hidden />
-              About
+              {t.about.eyebrow}
             </span>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-              Engineer at the intersection of <span className="text-gradient">security, network &amp; software engineering</span>
+              {t.about.headingPrefix} <span className="text-gradient">{t.about.headingHighlight}</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="mt-6 text-base leading-relaxed text-slate-400">
-              I&apos;m a Computer Science Engineer specializing in cybersecurity, networking and
-              software development. I enjoy designing secure infrastructures, automating deployments
-              and building reliable applications.
-            </p>
+            <p className="mt-6 text-base leading-relaxed text-slate-400">{t.about.paragraph}</p>
           </Reveal>
 
           <div className="mt-8 space-y-4">

@@ -23,10 +23,6 @@ import {
 
 export const siteConfig = {
   name: 'Daniel Nguyen',
-  role: 'Computer Science Engineer',
-  // Rotating phrases for the hero typing effect.
-  specialties: ['Cybersecurity', 'Networks', 'Cloud', 'Software Engineering'],
-  tagline: 'Computer Science Engineer passionate about cybersecurity, networking, and modern technologies. Always curious, always learning, and always looking for the next technical challenge.',
   location: 'Paris / Luxembourg',
   email: 'nguyendaniel940@outlook.fr',
   github: 'https://github.com/Tarkhog06',
@@ -37,53 +33,48 @@ export const siteConfig = {
   url: 'https://tarkhog06.github.io',
 } as const;
 
+/** href stays fixed; the visible label is looked up from the dictionary by key. */
 export const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
+  { key: 'about', href: '#about' },
+  { key: 'experience', href: '#experience' },
+  { key: 'projects', href: '#projects' },
+  { key: 'skills', href: '#skills' },
+  { key: 'contact', href: '#contact' },
 ] as const;
 
 /* -------------------------------------------------------------------------- */
 /*  Experience                                                                 */
 /* -------------------------------------------------------------------------- */
 
+/** company/location/period/tags are proper nouns & dates — not translated. role/description live in the dictionary, keyed by id. */
 export interface Experience {
+  id: string;
   company: string;
   location: string;
-  role: string;
   period: string;
-  description: string;
   tags: string[];
 }
 
 export const experiences: Experience[] = [
   {
+    id: 'kpmg',
     company: 'KPMG Luxembourg',
     location: 'Kirchberg, Luxembourg',
-    role: 'Network & Security Engineer',
     period: 'May 2026 — Oct 2026',
-    description:
-      'Improved and secured the on-premises network infrastructure and managed privileged access on network devices (Cisco, Indeni/Idira).',
     tags: ['Cisco', 'Network Security', 'PAM', 'Cisco ISE'],
   },
   {
+    id: 'bouygues',
     company: 'Bouygues Telecom',
     location: 'Meudon, France',
-    role: 'Software Engineer',
     period: 'Sep 2023 — Apr 2026',
-    description:
-      'Designed, developed, tested and deployed applications to production in close collaboration with stakeholders to meet functional and technical requirements.',
     tags: ['Figma', 'ServiceNow', 'PowerApps', 'Delivery'],
   },
   {
+    id: 'eurofins',
     company: 'Eurofins Biomnis',
     location: 'Ivry-sur-Seine, France',
-    role: 'Assistant Project Manager',
     period: 'Apr 2022 — Jun 2022',
-    description:
-      'Optimized temperature management for 300 sensors — assisting installation, training, validation and system transition in a medical laboratory.',
     tags: ['Oceasoft', 'Validation', 'Rollout'],
   },
 ];
@@ -92,13 +83,11 @@ export const experiences: Experience[] = [
 /*  Projects                                                                   */
 /* -------------------------------------------------------------------------- */
 
+/** title is a product name (kept as-is across locales); subtitle/category/description live in the dictionary, keyed by slug. */
 export interface Project {
   slug: string;
   title: string;
-  subtitle: string;
   year: string;
-  category: string;
-  description: string;
   tech: string[];
   icon: LucideIcon;
   featured?: boolean;
@@ -116,11 +105,7 @@ export const projects: Project[] = [
   {
     slug: 'home-lab',
     title: 'Home Lab',
-    subtitle: 'Self-hosted infrastructure on Proxmox',
     year: 'Ongoing',
-    category: 'Infrastructure',
-    description:
-      'A production-style homelab: Proxmox hypervisor segmented into dedicated VMs for a reverse-proxy / VPN gateway, containerized services, backups and full monitoring, exposed safely through a Cloudflare Tunnel.',
     tech: ['Proxmox', 'Docker', 'Kubernetes', 'Traefik', 'WireGuard', 'Prometheus', 'Grafana', 'ZFS'],
     icon: Server,
     featured: true,
@@ -130,11 +115,7 @@ export const projects: Project[] = [
   {
     slug: 'tenexa',
     title: 'Tenexa',
-    subtitle: 'Multi-cloud management platform',
     year: '2025',
-    category: 'Backend • Cloud',
-    description:
-      'A multi-provider cloud management platform (AWS, GCP & Horizon) for provisioning and lifecycle management of VMs, Kubernetes clusters, storage volumes and backup plans with event-driven workflow orchestration and real-time resource monitoring.',
     tech: ['Java', 'Spring Boot', 'RabbitMQ', 'Airflow', 'Keycloak', 'Vault', 'GitLab CI/CD'],
     icon: Cloud,
     featured: true,
@@ -143,11 +124,7 @@ export const projects: Project[] = [
   {
     slug: 'chat-stream',
     title: 'Chat Stream',
-    subtitle: 'TCP/UDP messaging from scratch',
     year: '2024',
-    category: 'Network Programming',
-    description:
-      'A real-time client-server messaging app implementing TCP/UDP from scratch: public chat, private messaging and direct peer-to-peer file transfer with optional password auth, backed by a custom RFC defining the protocol.',
     tech: ['Java', 'Concurrency', 'Non-blocking I/O', 'TCP', 'UDP', 'RFC Design'],
     icon: Network,
     repo: 'https://github.com/Tarkhog06',
@@ -155,11 +132,7 @@ export const projects: Project[] = [
   {
     slug: 'class-gen',
     title: 'Class Gen',
-    subtitle: 'Local LLM Java code generation',
     year: '2024',
-    category: 'LLM • Full-stack',
-    description:
-      'A full-stack tool that uses a locally-run LLM to generate, compile and automatically fix Java classes from natural-language prompts: full data confidentiality, no external API calls, orchestrated with Langchain4J.',
     tech: ['Java', 'Spring Boot', 'Svelte', 'Langchain4J', 'H2', 'OpenAPI'],
     icon: Code2,
     repo: 'https://github.com/Tarkhog06',
@@ -170,15 +143,16 @@ export const projects: Project[] = [
 /*  Skills                                                                     */
 /* -------------------------------------------------------------------------- */
 
+/** title is looked up from the dictionary's groupTitles by id; items are tool/protocol names, kept as-is across locales. */
 export interface SkillGroup {
-  title: string;
+  id: string;
   icon: LucideIcon;
   items: string[];
 }
 
 export const skillGroups: SkillGroup[] = [
   {
-    title: 'Cybersecurity',
+    id: 'cybersecurity',
     icon: Shield,
     items: [
       'Firewall / Proxy / NAT',
@@ -194,7 +168,7 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    title: 'Networking',
+    id: 'networking',
     icon: Network,
     items: [
       'OSI / TCP/IP',
@@ -209,17 +183,17 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    title: 'Languages',
+    id: 'languages',
     icon: Code2,
     items: ['Python', 'Java', 'Bash', 'C', 'Kotlin', 'TypeScript', 'JavaScript', 'SQL', 'HTML / CSS'],
   },
   {
-    title: 'Frameworks',
+    id: 'frameworks',
     icon: Layers,
     items: ['Spring Boot', 'JEE', 'FastAPI', 'React', 'Svelte', 'Next.js', 'Langchain4J', 'SQLAlchemy', 'Pydantic'],
   },
   {
-    title: 'Infra & DevOps',
+    id: 'infra',
     icon: Container,
     items: [
       'Docker / Compose',
@@ -233,7 +207,7 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    title: 'Data & Observability',
+    id: 'data',
     icon: Activity,
     items: ['PostgreSQL', 'Redis', 'MongoDB', 'Kafka', 'RabbitMQ', 'Airflow', 'Prometheus', 'Grafana', 'SolarWinds'],
   },
@@ -259,13 +233,14 @@ export const featuredStack = [
 /*  Certifications (in progress)                                               */
 /* -------------------------------------------------------------------------- */
 
+/** status is a key into the dictionary's certifications.status map, not display text. */
 export interface Certification {
   name: string;
   issuer: string;
-  status: string;
+  status: 'preparing' | 'planned';
 }
 
 export const certifications: Certification[] = [
-  { name: 'CCNA', issuer: 'Cisco', status: 'Preparing' },
-  { name: 'CompTIA Security+', issuer: 'CompTIA', status: 'Planned' },
+  { name: 'CCNA', issuer: 'Cisco', status: 'preparing' },
+  { name: 'CompTIA Security+', issuer: 'CompTIA', status: 'planned' },
 ];

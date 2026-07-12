@@ -5,10 +5,13 @@ import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './icons';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import { navLinks, siteConfig } from '@/lib/data';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/i18n/context';
 
 export function Navbar() {
+  const { t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -56,7 +59,7 @@ export function Navbar() {
               href={link.href}
               className="rounded-md px-3 py-2 text-sm text-slate-400 transition-colors hover:text-slate-100"
             >
-              {link.label}
+              {t.nav[link.key]}
             </a>
           ))}
         </div>
@@ -80,8 +83,9 @@ export function Navbar() {
           >
             <LinkedinIcon size={18} />
           </a>
+          <LanguageSwitcher />
           <a href="#contact" className="btn btn-primary ml-2 px-4 py-2 text-sm">
-            Contact
+            {t.nav.contactCta}
           </a>
         </div>
 
@@ -115,28 +119,31 @@ export function Navbar() {
                   onClick={() => setOpen(false)}
                   className="rounded-lg px-3 py-3 text-base text-slate-300 transition-colors hover:bg-white/5 hover:text-accent"
                 >
-                  {link.label}
+                  {t.nav[link.key]}
                 </a>
               ))}
-              <div className="mt-2 flex items-center gap-3 px-3 pt-3">
-                <a
-                  href={siteConfig.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="GitHub"
-                  className="text-slate-400 hover:text-accent"
-                >
-                  <GithubIcon size={20} />
-                </a>
-                <a
-                  href={siteConfig.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="LinkedIn"
-                  className="text-slate-400 hover:text-accent"
-                >
-                  <LinkedinIcon size={20} />
-                </a>
+              <div className="mt-2 flex items-center justify-between px-3 pt-3">
+                <div className="flex items-center gap-3">
+                  <a
+                    href={siteConfig.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="GitHub"
+                    className="text-slate-400 hover:text-accent"
+                  >
+                    <GithubIcon size={20} />
+                  </a>
+                  <a
+                    href={siteConfig.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="LinkedIn"
+                    className="text-slate-400 hover:text-accent"
+                  >
+                    <LinkedinIcon size={20} />
+                  </a>
+                </div>
+                <LanguageSwitcher />
               </div>
             </div>
           </motion.div>

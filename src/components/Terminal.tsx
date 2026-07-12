@@ -1,26 +1,12 @@
 'use client';
 
 import { motion, type Variants } from 'framer-motion';
+import { useLanguage } from '@/i18n/context';
 
 type Line =
   | { type: 'cmd'; text: string }
   | { type: 'out'; text: string; accent?: boolean }
   | { type: 'gap' };
-
-const lines: Line[] = [
-  { type: 'cmd', text: 'whoami' },
-  { type: 'out', text: 'Daniel Nguyen — Computer Science Engineer', accent: true },
-  { type: 'gap' },
-  { type: 'cmd', text: 'cat specialization.txt' },
-  { type: 'out', text: '• Cybersecurity   • Networks' },
-  { type: 'out', text: '• Backend         • Frontend' },
-  { type: 'gap' },
-  { type: 'cmd', text: 'ls ~/projects' },
-  { type: 'out', text: 'home-lab/   tenexa/   chat-stream/   class-gen/', accent: true },
-  { type: 'gap' },
-  { type: 'cmd', text: 'echo $STATUS' },
-  { type: 'out', text: 'Open to security roles' },
-];
 
 const lineVariants: Variants = {
   hidden: { opacity: 0, y: 6 },
@@ -32,6 +18,23 @@ const lineVariants: Variants = {
 };
 
 export function Terminal() {
+  const { t } = useLanguage();
+
+  const lines: Line[] = [
+    { type: 'cmd', text: 'whoami' },
+    { type: 'out', text: t.terminal.whoami, accent: true },
+    { type: 'gap' },
+    { type: 'cmd', text: t.terminal.specializationHeader },
+    { type: 'out', text: t.terminal.specializationLine1 },
+    { type: 'out', text: t.terminal.specializationLine2 },
+    { type: 'gap' },
+    { type: 'cmd', text: t.terminal.projectsHeader },
+    { type: 'out', text: 'home-lab/   tenexa/   chat-stream/   class-gen/', accent: true },
+    { type: 'gap' },
+    { type: 'cmd', text: t.terminal.statusHeader },
+    { type: 'out', text: t.terminal.status },
+  ];
+
   return (
     <div className="card overflow-hidden shadow-card">
       {/* Window chrome */}

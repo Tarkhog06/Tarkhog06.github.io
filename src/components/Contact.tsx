@@ -1,34 +1,39 @@
+'use client';
+
 import { ArrowUpRight, Download, Mail } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './icons';
 import { Reveal } from './Reveal';
 import { siteConfig } from '@/lib/data';
 import { asset } from '@/lib/utils';
-
-const methods = [
-  {
-    label: 'Email',
-    value: siteConfig.email,
-    href: `mailto:${siteConfig.email}`,
-    Icon: Mail,
-    external: false,
-  },
-  {
-    label: 'LinkedIn',
-    value: `linkedin.com/in/${siteConfig.linkedinHandle}`,
-    href: siteConfig.linkedin,
-    Icon: LinkedinIcon,
-    external: true,
-  },
-  {
-    label: 'GitHub',
-    value: `github.com/${siteConfig.githubHandle}`,
-    href: siteConfig.github,
-    Icon: GithubIcon,
-    external: true,
-  },
-];
+import { useLanguage } from '@/i18n/context';
 
 export function Contact() {
+  const { t } = useLanguage();
+
+  const methods = [
+    {
+      label: t.contact.methodLabels.email,
+      value: siteConfig.email,
+      href: `mailto:${siteConfig.email}`,
+      Icon: Mail,
+      external: false,
+    },
+    {
+      label: t.contact.methodLabels.linkedin,
+      value: `linkedin.com/in/${siteConfig.linkedinHandle}`,
+      href: siteConfig.linkedin,
+      Icon: LinkedinIcon,
+      external: true,
+    },
+    {
+      label: t.contact.methodLabels.github,
+      value: `github.com/${siteConfig.githubHandle}`,
+      href: siteConfig.github,
+      Icon: GithubIcon,
+      external: true,
+    },
+  ];
+
   return (
     <section id="contact" className="section">
       <div className="container-content">
@@ -46,24 +51,21 @@ export function Contact() {
             <div className="relative">
               <span className="eyebrow justify-center">
                 <span className="h-px w-6 bg-accent/60" aria-hidden />
-                Contact
+                {t.contact.eyebrow}
               </span>
               <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
-                Let&apos;s build something <span className="text-gradient">secure &amp; reliable</span>
+                {t.contact.headingPrefix} <span className="text-gradient">{t.contact.headingHighlight}</span>
               </h2>
-              <p className="mx-auto mt-4 max-w-lg text-base text-slate-400">
-                Open to opportunities in cybersecurity, network and infrastructure engineering.
-                The fastest way to reach me is email.
-              </p>
+              <p className="mx-auto mt-4 max-w-lg text-base text-slate-400">{t.contact.paragraph}</p>
 
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <a href={`mailto:${siteConfig.email}`} className="btn btn-primary">
                   <Mail size={16} />
-                  Get in touch
+                  {t.contact.getInTouch}
                 </a>
                 <a href={asset(`/${siteConfig.resume}`)} download className="btn btn-ghost">
                   <Download size={16} />
-                  Download Resume
+                  {t.contact.downloadResume}
                 </a>
               </div>
 

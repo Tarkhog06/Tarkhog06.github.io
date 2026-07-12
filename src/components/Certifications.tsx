@@ -1,8 +1,12 @@
+'use client';
+
 import { Award, Clock } from 'lucide-react';
 import { Reveal } from './Reveal';
 import { certifications } from '@/lib/data';
+import { useLanguage } from '@/i18n/context';
 
 export function Certifications() {
+  const { t } = useLanguage();
   return (
     <section id="certifications" className="section pt-0">
       <div className="container-content">
@@ -10,15 +14,13 @@ export function Certifications() {
           <div className="flex items-center gap-3">
             <span className="eyebrow">
               <span className="h-px w-6 bg-accent/60" aria-hidden />
-              Certifications
+              {t.certifications.eyebrow}
             </span>
           </div>
           <h3 className="mt-4 text-2xl font-semibold tracking-tight text-slate-100">
-            Currently preparing
+            {t.certifications.title}
           </h3>
-          <p className="mt-2 max-w-xl text-sm text-slate-400">
-            Formalizing hands-on experience with industry certifications — roadmap below.
-          </p>
+          <p className="mt-2 max-w-xl text-sm text-slate-400">{t.certifications.description}</p>
         </Reveal>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -31,7 +33,7 @@ export function Certifications() {
                   </div>
                   <span className="inline-flex items-center gap-1 rounded-full border border-border px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-slate-500">
                     <Clock size={10} />
-                    {cert.status}
+                    {t.certifications.status[cert.status]}
                   </span>
                 </div>
                 <p className="mt-4 font-semibold text-slate-100">{cert.name}</p>

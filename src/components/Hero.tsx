@@ -7,6 +7,7 @@ import { HeroBackground } from './HeroBackground';
 import { TypeCycle } from './TypeCycle';
 import { siteConfig } from '@/lib/data';
 import { asset } from '@/lib/utils';
+import { useLanguage } from '@/i18n/context';
 
 const container: Variants = {
   hidden: {},
@@ -19,6 +20,7 @@ const item: Variants = {
 };
 
 export function Hero() {
+  const { t, locale } = useLanguage();
   return (
     <section id="top" className="relative flex min-h-svh items-center overflow-hidden pt-16">
       <HeroBackground />
@@ -32,7 +34,7 @@ export function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
               </span>
-              Network &amp; Security Engineer @ KPMG Luxembourg
+              {t.hero.statusPill}
             </span>
           </motion.div>
 
@@ -46,19 +48,19 @@ export function Hero() {
 
           {/* Role + typed specialty */}
           <motion.p variants={item} className="mt-4 text-xl font-medium text-slate-200 sm:text-2xl">
-            {siteConfig.role}
+            {t.hero.role}
           </motion.p>
           <motion.div
             variants={item}
             className="mt-2 flex items-center gap-3 font-mono text-lg text-slate-400 sm:text-xl"
           >
             <span className="text-accent">$</span>
-            <TypeCycle words={siteConfig.specialties} className="text-slate-200" />
+            <TypeCycle key={locale} words={t.hero.specialties} className="text-slate-200" />
           </motion.div>
 
           {/* Tagline */}
           <motion.p variants={item} className="mt-6 max-w-xl text-base leading-relaxed text-slate-400 sm:text-lg">
-            {siteConfig.tagline} 
+            {t.hero.tagline}
           </motion.p>
 
           {/* Meta */}
@@ -73,12 +75,12 @@ export function Hero() {
           {/* CTAs */}
           <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-3">
             <a href="#projects" className="btn btn-primary">
-              View Projects
+              {t.hero.viewProjects}
               <ArrowRight size={16} />
             </a>
             <a href={asset(`/${siteConfig.resume}`)} download className="btn btn-ghost">
               <Download size={16} />
-              Download Resume
+              {t.hero.downloadResume}
             </a>
             <div className="flex items-center gap-1">
               <a

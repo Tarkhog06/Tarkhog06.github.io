@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import { siteConfig } from '@/lib/data';
+import { Providers } from '@/components/Providers';
 import './globals.css';
 
 const inter = Inter({
@@ -15,13 +16,17 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
+// SEO metadata is static-exported once at build time (this is a client-side
+// language switcher, not per-locale routes), so it intentionally stays in
+// English regardless of the visitor's selected UI language.
+const role = 'Computer Science Engineer';
 const description =
   'Daniel Nguyen — Computer Science Engineer specializing in cybersecurity, networking, cloud and backend development. Building secure infrastructures and reliable applications.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — ${siteConfig.role}`,
+    default: `${siteConfig.name} — ${role}`,
     template: `%s · ${siteConfig.name}`,
   },
   description,
@@ -43,13 +48,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: siteConfig.url,
-    title: `${siteConfig.name} — ${siteConfig.role}`,
+    title: `${siteConfig.name} — ${role}`,
     description,
     siteName: `${siteConfig.name} · Portfolio`,
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${siteConfig.name} — ${siteConfig.role}`,
+    title: `${siteConfig.name} — ${role}`,
     description,
   },
   icons: {
@@ -77,7 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

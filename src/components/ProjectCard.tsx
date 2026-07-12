@@ -1,8 +1,11 @@
+'use client';
+
 import Link from 'next/link';
 import { ArrowUpRight, Lock } from 'lucide-react';
 import { GithubIcon } from './icons';
 import type { Project } from '@/lib/data';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/i18n/context';
 
 /**
  * A single project card. Featured projects render wider (spanning two columns)
@@ -10,6 +13,8 @@ import { cn } from '@/lib/utils';
  * faint cyan spotlight; the whole card is clickable when a case study exists.
  */
 export function ProjectCard({ project }: { project: Project }) {
+  const { t } = useLanguage();
+  const copy = t.projects.items[project.slug];
   const { icon: Icon, featured } = project;
   const href = project.caseStudy;
   const isLinked = Boolean(href);
@@ -42,7 +47,7 @@ export function ProjectCard({ project }: { project: Project }) {
           <Icon size={22} />
         </div>
         <div className={cn('text-right', featured && 'lg:mt-auto lg:pt-6 lg:text-left')}>
-          <p className="font-mono text-xs uppercase tracking-wider text-accent/80">{project.category}</p>
+          <p className="font-mono text-xs uppercase tracking-wider text-accent/80">{copy.category}</p>
           <p className="mt-1 font-mono text-xs text-slate-500">{project.year}</p>
         </div>
       </div>
@@ -60,8 +65,8 @@ export function ProjectCard({ project }: { project: Project }) {
             />
           )}
         </div>
-        <p className="mt-0.5 text-sm text-slate-400">{project.subtitle}</p>
-        <p className="mt-3 text-sm leading-relaxed text-slate-400">{project.description}</p>
+        <p className="mt-0.5 text-sm text-slate-400">{copy.subtitle}</p>
+        <p className="mt-3 text-sm leading-relaxed text-slate-400">{copy.description}</p>
 
         {/* Tech */}
         <div className="mt-5 flex flex-wrap gap-2">
@@ -76,7 +81,7 @@ export function ProjectCard({ project }: { project: Project }) {
         <div className="mt-6 flex items-center gap-4 pt-2">
           {href && (
             <span className="inline-flex items-center gap-1.5 text-sm font-medium text-accent">
-              Case study
+              {t.projects.caseStudy}
               <ArrowUpRight size={15} />
             </span>
           )}
@@ -88,13 +93,13 @@ export function ProjectCard({ project }: { project: Project }) {
               className="inline-flex items-center gap-1.5 text-sm text-slate-400 transition-colors hover:text-accent"
             >
               <GithubIcon size={15} />
-              Code
+              {t.projects.code}
             </a>
           )}
           {project.access === 'private' && !project.repo && (
             <span className="inline-flex items-center gap-1.5 text-sm text-slate-500">
               <Lock size={14} />
-              Private
+              {t.projects.private}
             </span>
           )}
         </div>

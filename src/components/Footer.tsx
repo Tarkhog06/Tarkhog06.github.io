@@ -1,8 +1,12 @@
+'use client';
+
 import { GithubIcon, LinkedinIcon } from './icons';
 import { Mail } from 'lucide-react';
 import { siteConfig } from '@/lib/data';
+import { useLanguage } from '@/i18n/context';
 
 export function Footer() {
+  const { t } = useLanguage();
   const year = new Date().getFullYear();
   return (
     <footer className="border-t border-border">
@@ -10,7 +14,7 @@ export function Footer() {
         <div className="text-center sm:text-left">
           <p className="font-mono text-sm text-slate-300">{siteConfig.name}</p>
           <p className="mt-1 text-xs text-slate-500">
-            Built with Next.js, Tailwind CSS &amp; Framer Motion · © {year}
+            {t.footer.builtWith} · © {year}
           </p>
         </div>
         <div className="flex items-center gap-4">

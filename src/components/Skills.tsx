@@ -1,15 +1,19 @@
+'use client';
+
 import { SectionHeading } from './SectionHeading';
 import { Reveal } from './Reveal';
 import { featuredStack, skillGroups } from '@/lib/data';
+import { useLanguage } from '@/i18n/context';
 
 export function Skills() {
+  const { t } = useLanguage();
   return (
     <section id="skills" className="section">
       <div className="container-content">
         <SectionHeading
-          eyebrow="Skills"
-          title="Tools & technologies"
-          description="The stack I reach for across security, networking, software work."
+          eyebrow={t.skills.eyebrow}
+          title={t.skills.title}
+          description={t.skills.description}
         />
 
         {/* Featured stack badges */}
@@ -30,13 +34,13 @@ export function Skills() {
         {/* Grouped skills */}
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group, i) => (
-            <Reveal key={group.title} delay={i * 0.06}>
+            <Reveal key={group.id} delay={i * 0.06}>
               <div className="card h-full p-5 transition-colors duration-300 hover:border-accent/30">
                 <div className="flex items-center gap-2.5">
                   <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-muted text-accent">
                     <group.icon size={16} />
                   </div>
-                  <h4 className="text-sm font-semibold text-slate-100">{group.title}</h4>
+                  <h4 className="text-sm font-semibold text-slate-100">{t.skills.groupTitles[group.id]}</h4>
                 </div>
                 <div className="mt-4 flex flex-wrap gap-1.5">
                   {group.items.map((item) => (
