@@ -94,7 +94,7 @@ const security = [
   {
     icon: Cloud,
     title: 'Zero exposed ports',
-    desc: 'Public traffic flows only through an outbound Cloudflare Tunnel — the firewall has no inbound port-forwards to attack.',
+    desc: 'Public traffic flows only through an outbound Cloudflare Tunnel. The firewall has no inbound port-forwards to attack.',
   },
   {
     icon: Fingerprint,
@@ -114,7 +114,7 @@ const security = [
   {
     icon: KeyRound,
     title: 'Secrets management',
-    desc: 'Vault stores service credentials and API tokens — nothing hard-coded in compose files.',
+    desc: 'Vault stores service credentials and API tokens. Nothing hard-coded in compose files.',
   },
   {
     icon: Network,
@@ -185,7 +185,7 @@ const challenges = [
 const learnings = [
   {
     icon: ShieldCheck,
-    text: 'Defense-in-depth is a mindset — every layer (network, proxy, auth, secrets) assumes the one before it can fail.',
+    text: 'Defense-in-depth is a mindset. Every layer (network, proxy, auth, secrets) assumes the one before it can fail.',
   },
   {
     icon: SlidersHorizontal,
@@ -193,7 +193,7 @@ const learnings = [
   },
   {
     icon: Activity,
-    text: 'You cannot secure or optimize what you cannot see — observability came before scaling anything.',
+    text: 'You cannot secure or optimize what you cannot see. Observability came before scaling anything.',
   },
   {
     icon: GitBranch,
@@ -277,7 +277,7 @@ export default function HomeLabPage() {
                 <span className="text-gradient">Home Lab</span>
               </h1>
               <p className="mt-4 max-w-2xl text-lg text-slate-400">
-                A production-style, self-hosted infrastructure on Proxmox — segmented VMs, a
+                A production-style, self-hosted infrastructure on Proxmox: segmented VMs, a
                 zero-exposed-port edge, containerized services, layered security, full monitoring and
                 a tested 3-2-1 backup strategy.
               </p>
@@ -314,17 +314,17 @@ export default function HomeLabPage() {
             <div className="lg:col-span-2">
               <SectionTitle eyebrow="Overview" title="The goal">
                 Treat a home server like real infrastructure. The lab is a hands-on environment for
-                practicing the disciplines I care about professionally — network security, reverse
+                practicing the disciplines I care about professionally: network security, reverse
                 proxying, secrets management, container orchestration, observability and disaster
-                recovery — on a single Proxmox host without ever exposing it directly to the
+                recovery, on a single Proxmox host without ever exposing it directly to the
                 internet.
               </SectionTitle>
               <Reveal delay={0.1}>
                 <p className="mt-6 leading-relaxed text-slate-400">
                   Proxmox runs on ZFS for snapshots and data integrity. Workloads are split into
                   purpose-built VMs so a compromise or misconfiguration in one stays contained. The
-                  only path in from the outside is an outbound Cloudflare Tunnel guarded by Traefik
-                  and Authelia — there are no inbound port-forwards on the router at all.
+                  only path in from the outside is an outbound Cloudflare Tunnel guarded by Traefik.
+                  There are no inbound port-forwards on the router at all.
                 </p>
               </Reveal>
             </div>
