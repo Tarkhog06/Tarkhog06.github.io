@@ -1,6 +1,5 @@
 import { SectionHeading } from './SectionHeading';
 import { Reveal } from './Reveal';
-import { SkillBars } from './SkillBars';
 import { featuredStack, skillGroups } from '@/lib/data';
 
 export function Skills() {
@@ -28,37 +27,27 @@ export function Skills() {
           </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1fr)_1.2fr] lg:gap-16">
-          {/* Proficiency bars */}
-          <Reveal>
-            <h3 className="mb-6 font-mono text-sm uppercase tracking-wider text-slate-400">
-              Proficiency
-            </h3>
-            <SkillBars />
-          </Reveal>
-
-          {/* Grouped skills */}
-          <div className="grid gap-6 sm:grid-cols-2">
-            {skillGroups.map((group, i) => (
-              <Reveal key={group.title} delay={i * 0.06}>
-                <div className="card h-full p-5 transition-colors duration-300 hover:border-accent/30">
-                  <div className="flex items-center gap-2.5">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-muted text-accent">
-                      <group.icon size={16} />
-                    </div>
-                    <h4 className="text-sm font-semibold text-slate-100">{group.title}</h4>
+        {/* Grouped skills */}
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {skillGroups.map((group, i) => (
+            <Reveal key={group.title} delay={i * 0.06}>
+              <div className="card h-full p-5 transition-colors duration-300 hover:border-accent/30">
+                <div className="flex items-center gap-2.5">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-muted text-accent">
+                    <group.icon size={16} />
                   </div>
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {group.items.map((item) => (
-                      <span key={item} className="chip">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
+                  <h4 className="text-sm font-semibold text-slate-100">{group.title}</h4>
                 </div>
-              </Reveal>
-            ))}
-          </div>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {group.items.map((item) => (
+                    <span key={item} className="chip">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

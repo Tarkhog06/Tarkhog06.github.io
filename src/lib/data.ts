@@ -13,7 +13,6 @@ import {
   Network,
   Server,
   Shield,
-  ShieldCheck,
   Terminal,
   Workflow,
 } from 'lucide-react';
@@ -170,20 +169,6 @@ export const projects: Project[] = [
 /* -------------------------------------------------------------------------- */
 /*  Skills                                                                     */
 /* -------------------------------------------------------------------------- */
-
-export interface SkillBar {
-  label: string;
-  level: number; // 0–100
-  icon: LucideIcon;
-}
-
-export const skillBars: SkillBar[] = [
-  { label: 'Cybersecurity', level: 95, icon: ShieldCheck },
-  { label: 'Networking', level: 90, icon: Network },
-  { label: 'Backend', level: 92, icon: Server },
-  { label: 'Cloud', level: 80, icon: Cloud },
-  { label: 'Frontend', level: 62, icon: Code2 },
-];
 
 export interface SkillGroup {
   title: string;

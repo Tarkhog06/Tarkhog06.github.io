@@ -45,8 +45,7 @@ Almost everything lives in [`src/lib/data.ts`](src/lib/data.ts): name, links,
 experience, projects, skills and certifications. The Home Lab case study is in
 [`src/app/projects/home-lab/page.tsx`](src/app/projects/home-lab/page.tsx).
 
-Replace [`public/resume.pdf`](public/resume.pdf) with your real CV (keep the
-same filename), and swap `public/favicon.svg` if you want a different mark.
+Swap `public/favicon.svg` if you want a different mark.
 
 ## Structure
 
