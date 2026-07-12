@@ -436,7 +436,7 @@ export default function HomeLabPage() {
                 <p className="mt-3 text-sm leading-relaxed text-slate-400">
                   Administrative access never touches the public web UI. A WireGuard tunnel provides a
                   fast, modern VPN into the management VLAN, so SSH and Proxmox stay reachable only to
-                  authenticated peers — never exposed to the internet.
+                  authenticated peers.Never exposed to the internet.
                 </p>
               </div>
             </Reveal>
@@ -448,7 +448,7 @@ export default function HomeLabPage() {
                 </div>
                 <p className="mt-3 text-sm leading-relaxed text-slate-400">
                   Traffic is separated into management, services and untrusted segments. Firewall
-                  rules follow least privilege — the services VLAN can reach its databases, but the
+                  rules follow least privilege. The services VLAN can reach its databases, but the
                   untrusted segment can reach almost nothing.
                 </p>
               </div>
