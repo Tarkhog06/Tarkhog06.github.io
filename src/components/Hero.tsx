@@ -58,8 +58,7 @@ export function Hero() {
 
           {/* Tagline */}
           <motion.p variants={item} className="mt-6 max-w-xl text-base leading-relaxed text-slate-400 sm:text-lg">
-            {siteConfig.tagline} Designing secure networks, automating deployments and shipping
-            dependable systems from the metal up.
+            {siteConfig.tagline} 
           </motion.p>
 
           {/* Meta */}

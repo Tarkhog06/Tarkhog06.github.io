@@ -9,7 +9,7 @@ export function Skills() {
         <SectionHeading
           eyebrow="Skills"
           title="Tools & technologies"
-          description="The stack I reach for across security, networking, backend and infrastructure work."
+          description="The stack I reach for across security, networking, software work."
         />
 
         {/* Featured stack badges */}

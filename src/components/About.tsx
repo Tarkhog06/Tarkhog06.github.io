@@ -16,7 +16,7 @@ const facts = [
   {
     icon: Languages,
     label: 'Languages',
-    value: 'French (native) · English (professional) · Vietnamese (native)',
+    value: 'French (fluent) · English (professional) · Vietnamese (fluent)',
   },
 ];
 
@@ -31,17 +31,15 @@ export function About() {
               About
             </span>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-              Engineer at the intersection of <span className="text-gradient">security &amp; systems</span>
+              Engineer at the intersection of <span className="text-gradient">security, network &amp; software engineering</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
             <p className="mt-6 text-base leading-relaxed text-slate-400">
               I&apos;m a Computer Science Engineer specializing in cybersecurity, networking and
-              backend development. I enjoy designing secure infrastructures, automating deployments
-              and building reliable applications — comfortable across the stack, from configuring
-              network devices and hardening services to shipping Spring Boot APIs and orchestrating
-              containers.
+              software development. I enjoy designing secure infrastructures, automating deployments
+              and building reliable applications.
             </p>
           </Reveal>
 

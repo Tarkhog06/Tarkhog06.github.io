@@ -25,15 +25,15 @@ export const siteConfig = {
   name: 'Daniel Nguyen',
   role: 'Computer Science Engineer',
   // Rotating phrases for the hero typing effect.
-  specialties: ['Cybersecurity', 'Networks', 'Cloud', 'Backend'],
-  tagline: 'Building secure infrastructures and reliable backend applications.',
+  specialties: ['Cybersecurity', 'Networks', 'Cloud', 'Software Engineering'],
+  tagline: 'Computer Science Engineer passionate about cybersecurity, networking, and modern technologies. Always curious, always learning, and always looking for the next technical challenge.',
   location: 'Paris / Luxembourg',
   email: 'nguyendaniel940@outlook.fr',
   github: 'https://github.com/Tarkhog06',
   githubHandle: 'Tarkhog06',
   linkedin: 'https://www.linkedin.com/in/daniel-ngy',
   linkedinHandle: 'daniel-ngy',
-  resume: 'resume.pdf', // place the PDF in /public
+  resume: 'Daniel_Nguyen_Resume.pdf', // place the PDF in /public
   url: 'https://tarkhog06.github.io',
 } as const;
 
@@ -120,7 +120,7 @@ export const projects: Project[] = [
     year: 'Ongoing',
     category: 'Infrastructure',
     description:
-      'A production-style homelab: Proxmox hypervisor segmented into dedicated VMs for a reverse-proxy / VPN gateway, containerized services, backups and full monitoring — exposed safely through a Cloudflare Tunnel.',
+      'A production-style homelab: Proxmox hypervisor segmented into dedicated VMs for a reverse-proxy / VPN gateway, containerized services, backups and full monitoring, exposed safely through a Cloudflare Tunnel.',
     tech: ['Proxmox', 'Docker', 'Kubernetes', 'Traefik', 'WireGuard', 'Prometheus', 'Grafana', 'ZFS'],
     icon: Server,
     featured: true,
@@ -134,7 +134,7 @@ export const projects: Project[] = [
     year: '2025',
     category: 'Backend • Cloud',
     description:
-      'A multi-provider cloud management platform (AWS, GCP & Horizon) for provisioning and lifecycle management of VMs, Kubernetes clusters, storage volumes and backup plans — with event-driven workflow orchestration and real-time resource monitoring.',
+      'A multi-provider cloud management platform (AWS, GCP & Horizon) for provisioning and lifecycle management of VMs, Kubernetes clusters, storage volumes and backup plans with event-driven workflow orchestration and real-time resource monitoring.',
     tech: ['Java', 'Spring Boot', 'RabbitMQ', 'Airflow', 'Keycloak', 'Vault', 'GitLab CI/CD'],
     icon: Cloud,
     featured: true,
@@ -147,7 +147,7 @@ export const projects: Project[] = [
     year: '2024',
     category: 'Network Programming',
     description:
-      'A real-time client-server messaging app implementing TCP/UDP from scratch — public chat, private messaging and direct peer-to-peer file transfer with optional password auth, backed by a custom RFC defining the protocol.',
+      'A real-time client-server messaging app implementing TCP/UDP from scratch: public chat, private messaging and direct peer-to-peer file transfer with optional password auth, backed by a custom RFC defining the protocol.',
     tech: ['Java', 'Concurrency', 'Non-blocking I/O', 'TCP', 'UDP', 'RFC Design'],
     icon: Network,
     repo: 'https://github.com/Tarkhog06',
@@ -159,7 +159,7 @@ export const projects: Project[] = [
     year: '2024',
     category: 'LLM • Full-stack',
     description:
-      'A full-stack tool that uses a locally-run LLM to generate, compile and automatically fix Java classes from natural-language prompts — full data confidentiality, no external API calls, orchestrated with Langchain4J.',
+      'A full-stack tool that uses a locally-run LLM to generate, compile and automatically fix Java classes from natural-language prompts: full data confidentiality, no external API calls, orchestrated with Langchain4J.',
     tech: ['Java', 'Spring Boot', 'Svelte', 'Langchain4J', 'H2', 'OpenAPI'],
     icon: Code2,
     repo: 'https://github.com/Tarkhog06',
@@ -267,7 +267,5 @@ export interface Certification {
 
 export const certifications: Certification[] = [
   { name: 'CCNA', issuer: 'Cisco', status: 'Preparing' },
-  { name: 'CompTIA Security+', issuer: 'CompTIA', status: 'Preparing' },
-  { name: 'CKA', issuer: 'CNCF / Linux Foundation', status: 'Planned' },
-  { name: 'AWS Solutions Architect', issuer: 'Amazon Web Services', status: 'Planned' },
+  { name: 'CompTIA Security+', issuer: 'CompTIA', status: 'Planned' },
 ];

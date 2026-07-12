@@ -13,13 +13,13 @@ const lines: Line[] = [
   { type: 'gap' },
   { type: 'cmd', text: 'cat specialization.txt' },
   { type: 'out', text: '• Cybersecurity   • Networks' },
-  { type: 'out', text: '• Backend         • Cloud' },
+  { type: 'out', text: '• Backend         • Frontend' },
   { type: 'gap' },
   { type: 'cmd', text: 'ls ~/projects' },
   { type: 'out', text: 'home-lab/   tenexa/   chat-stream/   class-gen/', accent: true },
   { type: 'gap' },
   { type: 'cmd', text: 'echo $STATUS' },
-  { type: 'out', text: 'Open to security & infrastructure roles' },
+  { type: 'out', text: 'Open to security roles' },
 ];
 
 const lineVariants: Variants = {
