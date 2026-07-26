@@ -39,6 +39,31 @@ publishes `./out` to GitHub Pages.
 > Set `NEXT_PUBLIC_BASE_PATH: /portfolio` in the build step of the workflow so
 > assets resolve under the sub-path.
 
+## Analytics (Umami)
+
+Cookieless page analytics via [Umami Cloud](https://cloud.umami.is). The tracker
+script is only emitted when a website ID is present, so local dev and forks stay
+untracked with no extra config.
+
+**Setup:**
+
+1. Create the site in Umami Cloud and copy its **Website ID**.
+2. On GitHub: **Settings → Secrets and variables → Actions → Variables → New
+   repository variable**, name `NEXT_PUBLIC_UMAMI_WEBSITE_ID`, value = that ID.
+   (A *variable*, not a secret — it ends up in the public HTML either way, and
+   Umami website IDs are public by design.)
+3. Re-run the deploy workflow.
+
+To test locally, put the same key in a `.env.local` file (gitignored).
+
+Moving to a self-hosted Umami later only means adding a second repository
+variable, `NEXT_PUBLIC_UMAMI_SRC`, pointing at `https://<your-host>/script.js` —
+no code change.
+
+> Note: as a static site there's no server-side proxy, so the tracker request is
+> third-party and some visitors' ad blockers will drop it. Expect counts to run
+> below reality.
+
 ## Editing content
 
 Almost everything lives in [`src/lib/data.ts`](src/lib/data.ts): name, links,

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
+import Script from 'next/script';
 import { siteConfig } from '@/lib/data';
 import { Providers } from '@/components/Providers';
 import './globals.css';
@@ -65,6 +66,17 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+/**
+ * Umami analytics (cookieless, no consent banner needed for the default setup).
+ *
+ * Both values are baked in at build time by the deploy workflow. When the ID is
+ * absent — local dev, or a fork without the repo variable set — the script is
+ * simply not rendered, so nothing is tracked. `NEXT_PUBLIC_UMAMI_SRC` only
+ * needs overriding if the tracker moves off Umami Cloud (e.g. self-hosted).
+ */
+const umamiWebsiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
+const umamiSrc = process.env.NEXT_PUBLIC_UMAMI_SRC || 'https://cloud.umami.is/script.js';
+
 export const viewport: Viewport = {
   themeColor: '#0B1120',
   width: 'device-width',
@@ -83,6 +95,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <Providers>{children}</Providers>
+        {umamiWebsiteId && (
+          <Script
+            src={umamiSrc}
+            data-website-id={umamiWebsiteId}
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   );
